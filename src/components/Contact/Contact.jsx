@@ -29,7 +29,7 @@ export default function Contact({ name, number, id }) {
           {number}
         </p>
       </div>
-      <button className={s.button} onClick={() => handleDelete()}>
+      <button className={s.deleteBtn} onClick={() => handleDelete()}>
         Delete
       </button>
     </li>
