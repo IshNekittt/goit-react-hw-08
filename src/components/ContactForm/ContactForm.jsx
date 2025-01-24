@@ -3,6 +3,7 @@ import s from "./ContactForm.module.css";
 import * as Yup from "yup";
 import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 const startValues = {
   name: "",
@@ -27,7 +28,14 @@ export default function ContactForm() {
       addContact({
         ...values,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("New contact added!");
+      })
+      .catch(() => {
+        toast.error("Something went wrong!");
+      });
     actions.resetForm();
   };
   return (
