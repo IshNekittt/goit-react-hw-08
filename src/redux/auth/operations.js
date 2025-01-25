@@ -19,7 +19,7 @@ export const register = createAsyncThunk(
       setToken(data.token);
       return data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
@@ -30,7 +30,7 @@ export const logIn = createAsyncThunk("auth/login", async (user, thunkAPI) => {
     setToken(data.token);
     return data;
   } catch (e) {
-    thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
 
@@ -39,7 +39,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     await axios.post("/users/logout");
     removeToken();
   } catch (e) {
-    thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
 
@@ -56,6 +56,6 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
     const { data } = await axios.get("/users/current");
     return data;
   } catch (e) {
-    thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue(e.message);
   }
 });
