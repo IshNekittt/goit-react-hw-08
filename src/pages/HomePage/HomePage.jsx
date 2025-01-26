@@ -8,7 +8,7 @@ export default function HomePage() {
       <Helmet>
         <title>Home page</title>
       </Helmet>
-      <h1 className={s.header}>The task manager is ready for you</h1>
+      <h1 className={s.header}>The contact manager is ready for you</h1>
       <FaTasks className={s.icon} />
     </div>
   );
